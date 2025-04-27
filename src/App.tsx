@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Quiz from './components/quiz';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const [quizStarted, setQuizStarted] = useState(false);
+
+  const handleStart = () => {
+    setQuizStarted(true);
+    console.log('Start button clicked!');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!quizStarted ? (
+        
+        <>
+          <h1 className="title">QUIZZY</h1>
+          <span className="tag">"Fuel Your Curiosity. Conquer the Quizverse."</span>
+          <button type='submit' className='btn1' onClick={handleStart}>Start</button>
+        </>
+      ) : (
+        
+        <Quiz />
+      )}
     </div>
   );
 }
